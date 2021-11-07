@@ -1,0 +1,65 @@
+<RegScreen>
+    name: 'reg'
+    login: login
+    password: password
+    password_2: password_2
+    email: email
+    on_enter:
+        login.text = ''
+        password.ids.text_field.text = ''
+        password_2.ids.text_field.text = ''
+        email.text = ''
+    MDCard:
+        size_hint: 0.8, 0.8
+        pos_hint: {'center_x': .5, 'center_y': .5}
+        elevation: 15
+        radius: 25, 25, 25, 25
+        orientation: 'vertical'
+        spacing: '30dp'
+        Widget:
+        MDLabel:
+            text: 'Регистрация'
+            halign: 'center'
+            theme_text_color: 'Primary'
+            font_style: 'H4'
+            size_hint_y: 0.2
+        MDTextField:
+            id: login
+            multiline: False
+            hint_text: "Введите имя"
+            icon_right : "account"
+            icon_right_color: (1, 1, 1, 1) if app.theme == 'dark' else (0, 0, 0, 1)
+            pos_hint: {'center_x': .5}
+            size_hint_x: 0.8
+        ClickableTextField:
+            id: password
+            multiline: False
+            hint_text: "Введите пароль"
+            pos_hint: {'center_x': .5}
+            size_hint_x: 0.8
+        ClickableTextField:
+            id: password_2
+            multiline: False
+            hint_text: "Введите пароль ещё раз"
+            pos_hint: {'center_x': .5}
+            size_hint_x: 0.8
+        MDTextField:
+            id: email
+            multiline: False
+            hint_text: "Введите почту"
+            icon_right : "email"
+            icon_right_color: (1, 1, 1, 1) if app.theme == 'dark' else (0, 0, 0, 1)
+            pos_hint: {'center_x': .5}
+            size_hint_x: 0.8
+        MDBoxLayout:
+            orientation: 'vertical'
+            adaptive_height: True
+            MDRectangleFlatButton:
+                text: 'Готово'
+                pos_hint: {'center_x': .5}
+                on_release: app.reg_check(self)
+            MDFlatButton:
+                text: 'Уже есть аккаунт'
+                pos_hint: {'center_x': .5}
+                theme_text_color: 'Hint'
+                on_release: app.change_screen(app.scr_manager, 'enter')

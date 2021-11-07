@@ -1,0 +1,161 @@
+#:include settings.kv
+#:include enter.kv
+#:include data.kv
+#:include info.kv
+#:include ege.kv
+#:include learning.kv
+#:include guess.kv
+#:include registration.kv
+#:include description.kv
+#:include match.kv
+#:include add_objects.kv
+#:include loading.kv
+#:import CardTransition kivy.uix.screenmanager.CardTransition
+
+<MainScreen>:
+    main_manager: sm
+    main_toolbar: toolbar
+
+    BoxLayout:
+        orientation: "vertical"
+        MDToolbar:
+            id: toolbar
+            pos_hint: {'top': 1}
+            left_action_items: [['menu', lambda x: nav_drawer.set_state("open")]]
+            right_action_items: [['cog', lambda x: app.change_screen(root.ids.sm, 'settings')]]
+
+        MDNavigationLayout:
+            ScreenManager:
+                id: sm
+                transition: CardTransition(duration=0.3, direction='up', mode='pop')
+
+                DataScreen:
+                    id: data_screen
+                    manager: sm
+                LearningScreen:
+                GuessScreen:
+                MatchScreen:
+                    id: match
+                SettingsScreen:
+                EGEScreen:
+                InfoScreen:
+                DescScreen:
+                AddObjScreen:
+                    id: add_obj
+                LoadingScreen:
+
+            MDNavigationDrawer:
+
+                enable_swiping: True
+                id: nav_drawer
+                MDBoxLayout:
+                    orientation: 'vertical'
+                    Widget:
+                    MDList:
+                        OneLineIconListItem:
+                            text: 'Главная'
+                            on_press:
+                                if root.ids.sm.current != 'data': app.screens.append([root.ids.sm, root.ids.sm.current])
+                                root.ids.nav_drawer.set_state("close")
+                                root.ids.sm.current = 'data'
+                            IconLeftWidget:
+                                icon: 'home'
+                                on_press:
+                                    if root.ids.sm.current != 'data': app.screens.append([root.ids.sm, root.ids.sm.current])
+                                    root.ids.nav_drawer.set_state("close")
+                                    root.ids.sm.current = 'data'
+                        OneLineIconListItem:
+                            text: 'Изучение'
+                            on_press:
+                                if root.ids.sm.current != 'learning': app.screens.append([root.ids.sm, root.ids.sm.current])
+                                root.ids.nav_drawer.set_state("close")
+                                root.ids.sm.current = 'learning'
+                            IconLeftWidget:
+                                icon: 'book-education-outline'
+                                on_press:
+                                    if root.ids.sm.current != 'learning': app.screens.append([root.ids.sm, root.ids.sm.current])
+                                    root.ids.nav_drawer.set_state("close")
+                                    root.ids.sm.current = 'learning'
+                        OneLineIconListItem:
+                            text: 'Угадайка'
+                            on_press:
+                                if root.ids.sm.current != 'guess': app.screens.append([root.ids.sm, root.ids.sm.current])
+                                root.ids.nav_drawer.set_state("close")
+                                root.ids.sm.current = 'guess'
+                            IconLeftWidget:
+                                icon: 'arrow-right-drop-circle-outline'
+                                on_press:
+                                    if root.ids.sm.current != 'guess': app.screens.append([root.ids.sm, root.ids.sm.current])
+                                    root.ids.nav_drawer.set_state("close")
+                                    root.ids.sm.current = 'guess'
+                        OneLineIconListItem:
+                            text: 'Соответсвия'
+                            on_press:
+                                if root.ids.sm.current != 'match': app.screens.append([root.ids.sm, root.ids.sm.current])
+                                root.ids.nav_drawer.set_state("close")
+                                root.ids.sm.current = 'match'
+                            IconLeftWidget:
+                                icon: 'arrow-right-drop-circle-outline'
+                                on_press:
+                                    if root.ids.sm.current != 'match': app.screens.append([root.ids.sm, root.ids.sm.current])
+                                    root.ids.nav_drawer.set_state("close")
+                                    root.ids.sm.current = 'match'
+                        OneLineIconListItem:
+                            text: 'ЕГЭ'
+                            on_press:
+                                if root.ids.sm.current != 'ege': app.screens.append([root.ids.sm, root.ids.sm.current])
+                                root.ids.nav_drawer.set_state("close")
+                                root.ids.sm.current = 'ege'
+                            IconLeftWidget:
+                                icon: 'lead-pencil'
+                                on_press:
+                                    if root.ids.sm.current != 'ege': app.screens.append([root.ids.sm, root.ids.sm.current])
+                                    root.ids.nav_drawer.set_state("close")
+                                    root.ids.sm.current = 'ege'
+                        OneLineIconListItem:
+                            text: 'Справка'
+                            on_press:
+                                if root.ids.sm.current != 'desc': app.screens.append([root.ids.sm, root.ids.sm.current])
+                                root.ids.nav_drawer.set_state("close")
+                                root.ids.sm.current = 'desc'
+                            IconLeftWidget:
+                                icon: 'crosshairs-question'
+                                on_press:
+                                    if root.ids.sm.current != 'desc': app.screens.append([root.ids.sm, root.ids.sm.current])
+                                    root.ids.nav_drawer.set_state("close")
+                                    root.ids.sm.current = 'desc'
+                        OneLineIconListItem:
+                            text: 'Добавить объект'
+                            on_press:
+                                if root.ids.sm.current != 'add_obj': app.screens.append([root.ids.sm, root.ids.sm.current])
+                                root.ids.nav_drawer.set_state("close")
+                                root.ids.sm.current = 'add_obj'
+                            IconLeftWidget:
+                                icon: 'plus'
+                                on_press:
+                                    if root.ids.sm.current != 'add_obj': app.screens.append([root.ids.sm, root.ids.sm.current])
+                                    root.ids.nav_drawer.set_state("close")
+                                    root.ids.sm.current = 'add_obj'
+                    Widget:
+
+
+<Manager>:
+    id: screen_manager
+    enter_screen: enter_screen
+    main_screen: main_screen
+    reg_screen: reg_screen
+
+    MainScreen:
+        id: main_screen
+        name: 'main'
+        manager: screen_manager
+
+    EnterScreen:
+        id: enter_screen
+        name: 'enter'
+        manager: screen_manager
+
+    RegScreen:
+        id: reg_screen
+        name: 'reg'
+        manager: screen_manager

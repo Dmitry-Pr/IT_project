@@ -1,0 +1,65 @@
+<DataScreen>:
+    name: 'data'
+#    MDBanner:
+#        id: banner
+#        text: ["Подключение к сети потерянно"]
+#        over_widget: bottom_nav
+
+    MDBottomNavigation:
+        text_color_active: self.theme_cls.primary_dark
+        use_text: False
+        id: bottom_nav
+
+        MDBottomNavigationItem:
+            name: 'architecture'
+            icon: 'castle'
+            on_tab_press: root.change_data(self)
+            DataScroll:
+                id: arch_scroll
+                refresh_callback: root.refresh_callback
+
+
+        MDBottomNavigationItem:
+            name: 'person'
+            icon: 'horse-human'
+            on_tab_press: root.change_data(self)
+            DataScroll:
+                id: person_scroll
+                refresh_callback: root.refresh_callback
+
+        MDBottomNavigationItem:
+            name: 'stamp'
+            icon: 'postage-stamp'
+            on_tab_press: root.change_data(self)
+            DataScroll:
+                id: stamp_scroll
+                refresh_callback: root.refresh_callback
+
+        MDBottomNavigationItem:
+            name: 'drawing'
+            icon: 'drawing'
+            on_tab_press: root.change_data(self)
+            DataScroll:
+                id: drawing_scroll
+                refresh_callback: root.refresh_callback
+
+        MDBottomNavigationItem:
+            name: 'marked'
+            icon: 'star'
+            on_tab_press: root.change_data(self)
+            DataScroll:
+                id: marked_scroll
+                refresh_callback: root.refresh_callback
+
+<DataScroll>:
+    MDScrollViewRefreshLayout:
+        do_scroll_x: False
+        do_scroll_y: True
+        size_hint_x: 1
+        id: refresh_layout
+        refresh_callback: root.refresh_callback
+        root_layout: root
+
+        GridLayout:
+            id: inf
+            minimum_height: self.height

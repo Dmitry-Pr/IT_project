@@ -1,0 +1,34 @@
+<EGEScreen>:
+    name: "ege"
+
+<MyCheckbox>:
+    MDCheckbox:
+        id: check
+        active: root.active
+        group: root.group
+        on_active: root.on_checkbox_active(self.group, root.text, *args)
+        radio_icon_normal: 'checkbox-blank-outline' if 'ans' in root.group else 'checkbox-blank-circle-outline'
+        radio_icon_down: 'checkbox-marked' if 'ans' in root.group else 'checkbox-marked-circle'
+
+<ScrollLabel>:
+    text: root.text
+#    ScrollView:
+#        size_hint_x: 0.9
+#        canvas:
+#            Color:
+#                rgba: .9, .9, .9, 0.1
+#            Rectangle:
+#                pos: self.pos
+#                size: self.size
+#
+#        do_scroll_x: False
+##        pos_hint: {'center_x': 0.5}
+    MDLabel:
+        id: task_text
+        size_hint_y: None
+        height: self.texture_size[1]
+        pos_hint: {'center_x': 0.5}
+        text_size: root.width, None
+        halign: "auto"
+        valign: "center"
+        text: root.text

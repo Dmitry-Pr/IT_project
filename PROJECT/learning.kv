@@ -1,0 +1,43 @@
+<LearningScreen>:
+    name: 'learning'
+<MySwiper>:
+    ScreenManager:
+        id: screen_manager
+        transition: root.transition
+        MDScreen:
+            id: scr1
+            name: 'scr1'
+            md_bg_color: app.theme_cls.bg_light
+
+
+        MDScreen:
+            id: scr2
+            name: 'scr2'
+            md_bg_color: app.theme_cls.bg_light
+
+<InfoCard>:
+
+    MDCard:
+        size_hint: 0.95, 0.95
+        pos_hint: {'center_x': .5, 'center_y': .5}
+        elevation: 15
+        radius: 25, 25, 25, 25
+        orientation: 'vertical'
+        md_bg_color: app.theme_cls.bg_light
+        spacing: '5dp'
+        AsyncImage:
+            size_hint: 1, 0.45
+            pos_hint: {'left': 0.0, 'top': 1}
+            allow_stretch: True
+            source: root.obj_pict
+        MDLabel:
+            text: root.obj_name
+            size_hint_y: .1
+            text_size: self.size
+            font_style:'H5'
+            halign: 'center'
+        MDLabel:
+            text: root.obj_info
+            font_style: 'Caption'
+            halign: 'center'
+            size_hint: 1, 0.45

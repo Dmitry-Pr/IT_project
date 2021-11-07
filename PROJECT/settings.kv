@@ -1,0 +1,192 @@
+<SettingsScreen>:
+    name: 'settings'
+    ScrollView:
+        MDBoxLayout:
+            size_hint_y: 1.2
+            orientation: 'vertical'
+    #        adaptive_size: True
+            md_bg_color: 0, 0, 0, 0
+    #        pos_hint: {"center_x": .5, "center_y": .5}
+            Widget:
+            MDGridLayout:
+                size_hint_x: 0.8
+                pos_hint: {"center_x": .5}
+                adaptive_height: True
+                rows: 2
+                MDLabel:
+                    size: self.texture_size
+                    text: 'Имя:'
+                MDLabel:
+                    id: name
+                    halign: 'right'
+                    size: self.texture_size
+                MDLabel:
+                    size: self.texture_size
+                    text: 'Почта:'
+                MDLabel:
+                    id: email
+                    halign: 'right'
+                    size: self.texture_size
+            MDBoxLayout:
+                size_hint_x: 0.8
+                pos_hint: {"center_x": .5}
+                adaptive_height: True
+                orientation: 'horizontal'
+                MDLabel:
+                    size: self.texture_size
+                    text: 'Тёмная тема'
+                MDSwitch:
+                    id: switch
+                    on_release: app.change_theme('dark') if self.active else app.change_theme('light')
+            MDBoxLayout:
+                size_hint_x: 0.8
+                pos_hint: {"center_x": .5}
+                adaptive_height: True
+                orientation: 'horizontal'
+                MDLabel:
+                    text: "Длина ленты"
+                    size: self.texture_size
+                MDLabel:
+                    id: data_length
+                    halign: 'right'
+                    text: str(root.settings.get('data_length'))
+                    size: self.texture_size
+                MDBoxLayout:
+                    adaptive_size: True
+                    orientation: 'vertical'
+                    MDIconButton:
+                        icon: 'chevron-up'
+                        on_release: root.level_up(self, 'data_length')
+                    MDIconButton:
+                        icon: 'chevron-down'
+                        on_release: root.level_down(self, 'data_length')
+            MDBoxLayout:
+                size_hint_x: 0.8
+                pos_hint: {"center_x": .5}
+                adaptive_height: True
+                orientation: 'horizontal'
+                MDLabel:
+                    text: "Сложность угадайки"
+                    size: self.texture_size
+                MDLabel:
+                    id: guess
+                    halign: 'right'
+                    text: str(root.settings.get('guess_level'))
+                    size: self.texture_size
+                MDBoxLayout:
+                    adaptive_size: True
+                    orientation: 'vertical'
+                    MDIconButton:
+                        icon: 'chevron-up'
+                        on_release: root.level_up(self, 'guess')
+                    MDIconButton:
+                        icon: 'chevron-down'
+                        on_release: root.level_down(self, 'guess')
+            MDBoxLayout:
+                size_hint_x: 0.8
+                pos_hint: {"center_x": .5}
+                adaptive_height: True
+                orientation: 'horizontal'
+                MDLabel:
+                    text: "Длина угадайки"
+                    size: self.texture_size
+                MDLabel:
+                    id: guess_length
+                    halign: 'right'
+                    text: str(root.settings.get('guess_length'))
+                    size: self.texture_size
+                MDBoxLayout:
+                    adaptive_size: True
+                    orientation: 'vertical'
+                    MDIconButton:
+                        icon: 'chevron-up'
+                        on_release: root.level_up(self, 'guess_length')
+                    MDIconButton:
+                        icon: 'chevron-down'
+                        on_release: root.level_down(self, 'guess_length')
+            MDBoxLayout:
+                size_hint_x: 0.8
+                pos_hint: {"center_x": .5}
+                adaptive_height: True
+                orientation: 'horizontal'
+                MDLabel:
+                    text: "Сложность соответствий"
+                    size: self.texture_size
+                MDLabel:
+                    id: match
+                    halign: 'right'
+                    text: str(root.settings.get('match_level'))
+                    size: self.texture_size
+                MDBoxLayout:
+                    adaptive_size: True
+                    orientation: 'vertical'
+                    MDIconButton:
+                        icon: 'chevron-up'
+                        on_release: root.level_up(self, 'match')
+                    MDIconButton:
+                        icon: 'chevron-down'
+                        on_release: root.level_down(self, 'match')
+            MDBoxLayout:
+                size_hint_x: 0.8
+                pos_hint: {"center_x": .5}
+                adaptive_height: True
+                orientation: 'horizontal'
+                MDLabel:
+                    text: "Длина соответсвий"
+                    size: self.texture_size
+                MDLabel:
+                    id: match_length
+                    halign: 'right'
+                    text: str(root.settings.get('match_length'))
+                    size: self.texture_size
+                MDBoxLayout:
+                    adaptive_size: True
+                    orientation: 'vertical'
+                    MDIconButton:
+                        icon: 'chevron-up'
+                        on_release: root.level_up(self, 'match_length')
+                    MDIconButton:
+                        icon: 'chevron-down'
+                        on_release: root.level_down(self, 'match_length')
+            MDBoxLayout:
+                size_hint_x: 0.8
+                pos_hint: {"center_x": .5}
+                adaptive_height: True
+                orientation: 'horizontal'
+                MDLabel:
+                    text: "Количество объектов в изучении"
+                    size: self.texture_size
+                MDLabel:
+                    id: learning
+                    halign: 'right'
+                    text: str(root.settings.get('learning_level'))
+                    size: self.texture_size
+                MDBoxLayout:
+                    adaptive_size: True
+                    orientation: 'vertical'
+                    MDIconButton:
+                        icon: 'chevron-up'
+                        on_release: root.level_up(self, 'learning')
+                    MDIconButton:
+                        icon: 'chevron-down'
+                        on_release: root.level_down(self, 'learning')
+            MDBoxLayout:
+                orientation: 'horizontal'
+                size_hint_x: 0.8
+                pos_hint: {'center_x' : 0.5}
+                Widget:
+                MDRectangleFlatButton:
+                    text: 'Выйти'
+                    on_release: root.exit(self)
+                Widget:
+            MDBoxLayout:
+                orientation: 'horizontal'
+                size_hint_x: 0.8
+                pos_hint: {'center_x' : 0.5}
+                Widget:
+                MDFlatButton:
+                    text: 'Удалить все данные'
+                    theme_text_color: "Error"
+                    on_release: root.delete_pressed(self)
+                Widget:
+            Widget:

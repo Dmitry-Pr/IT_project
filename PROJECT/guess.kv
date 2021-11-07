@@ -1,0 +1,16 @@
+<GuessScreen>:
+    name: 'guess'
+<MyCard>:
+    MDCard:
+        id: card
+        size_hint: 0.95, 0.95
+        pos_hint: {'center_x': .5, 'center_y': .5}
+        elevation: 15
+        radius: 25, 25, 25, 25
+        orientation: 'vertical'
+        spacing: '5dp'
+        MDLabel:
+            halign: 'center'
+            text: root.obj_name
+            size_hint_y: 0.2
+            font_style: 'H4'
