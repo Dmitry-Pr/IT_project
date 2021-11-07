@@ -1,6 +1,9 @@
 import os
 import dotenv
 
+"""If you want to test this app on your database, you should write 
+host, user, password, etc. in ".env" file in the project directory. 
+"""
 dotenv.load_dotenv('.env')
 host = os.environ['host']
 user = os.environ['user']
