@@ -192,6 +192,7 @@ class InfoScreen(MDScreen, EventDispatcher):
             self.add_btn.text = 'Добавить\nв помеченные'
             if MDApp.get_running_app().connected:
                 try:
+                    MDApp.get_running_app().con.ping(True)
                     with MDApp.get_running_app().con.cursor() as cursor:
                         cursor.execute(f'''DELETE FROM marked_objects
                                            WHERE user_id="{MDApp.get_running_app().user.user_id}"
