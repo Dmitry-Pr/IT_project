@@ -179,6 +179,7 @@ class InfoScreen(MDScreen, EventDispatcher):
             self.add_btn.text = 'Удалить\nиз помеченных'
             if MDApp.get_running_app().connected:
                 try:
+                    MDApp.get_running_app().con.ping(True)
                     with MDApp.get_running_app().con.cursor() as cursor:
                         cursor.execute(f'''INSERT INTO marked_objects (user_id, obj_id)
                                            VALUES ("{MDApp.get_running_app().user.user_id}", "{self.obj_id}")''')
