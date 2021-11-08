@@ -29,7 +29,7 @@ class DataScroll(MDScreen):
 class ScrollLabel(ScrollView):
     """Class of scrollable label."""
     text = StringProperty()
-    """Text to show if the label."""
+    """Text to show on the label."""
 
     def __init__(self, **kwargs):
         super(ScrollLabel, self).__init__(**kwargs)
