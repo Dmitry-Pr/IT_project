@@ -9,7 +9,7 @@ from pymysql import OperationalError, InterfaceError
 
 
 class RegScreen(MDScreen):
-    """Class of registration screen."""
+    """Class of the registration screen."""
     email_exist = False
     login_exist = False
 
