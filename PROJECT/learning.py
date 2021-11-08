@@ -263,7 +263,7 @@ class LearningScreen(MDScreen):
 
 
 class InfoCard(LearningScreen):
-    """Class of template of card with objects information."""
+    """Class of template of a card with object's information."""
     obj_pict = StringProperty()
     obj_name = StringProperty()
     obj_info = StringProperty()
