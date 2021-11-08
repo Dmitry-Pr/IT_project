@@ -3,7 +3,7 @@ from bs4 import BeautifulSoup
 
 
 def get_problem_by_id(id):
-    """Getting information about the task by its id.
+    """Getting information about the task by it's id.
     The method does almost the same as the so called
     method from sdamgia lib, but fixes some bugs in it
     and works only for history subject.
