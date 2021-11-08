@@ -50,7 +50,7 @@ class EnterScreen(MDScreen):
         self.dialog.dismiss()
 
     def user_check(self, log, pas):
-        """A method that checks if there is a user user
+        """A method that checks if there is a user
         with this login and this password in the database.
         """
         pwd = hashlib.md5(pas.encode()).hexdigest()
