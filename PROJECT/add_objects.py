@@ -87,7 +87,7 @@ class AddObjScreen(MDScreen):
         MDApp.get_running_app().change_screen(self.manager, 'loading')
 
     def find_images(self):
-        """A method that finds images on users devise."""
+        """A method that finds images on user's devise."""
         try:
             self.data = os.listdir(self.fold + '/')
             self.data.sort(key=lambda x: datetime.datetime.fromtimestamp(os.path.getctime(
@@ -113,7 +113,6 @@ class AddObjScreen(MDScreen):
                 grid.add_widget(SmartTileWithLabel(source=self.fold + '/' + data[i],
                                                    text=self.fold + '/' + data[i],
                                                    on_press=self.add_image))
-                # print(self.fold + '/' + data[i])
         img_list.add_widget(grid)
         self.add_widget(img_list)
 
@@ -131,7 +130,7 @@ class AddObjScreen(MDScreen):
 
     def change_type_up(self, instance):
         """A method that changes type of the object if the corresponding button is pressed."""
-        types = ['architecture', 'person', 'stamp', 'drawing']
+        types = ['архитектура', 'личность', 'марка', 'картина']
         i = types.index(self.ids.sets.ids.type.text)
         if i - 1 >= 0:
             i -= 1
@@ -139,7 +138,7 @@ class AddObjScreen(MDScreen):
 
     def change_type_down(self, instance):
         """A method that changes type of the object if the corresponding button is pressed."""
-        types = ['architecture', 'person', 'stamp', 'drawing']
+        types = ['архитектура', 'личность', 'марка', 'картина']
         i = types.index(self.ids.sets.ids.type.text)
         if i + 1 < len(types):
             i += 1
@@ -156,9 +155,14 @@ class AddObjScreen(MDScreen):
         info = self.ids.sets.ids.info_inp.text
         if len(info) > 663:
             info = info[:663]
+        if len(info.strip()) == 0:
+            self.create_dialog('Введите описание')
+            return
         info = ' '.join(info.split('\n'))
-        t = self.ids.sets.ids.type.text
-        self.saving_image(name, info, t, self.img)
+        types = ['архитектура', 'личность', 'марка', 'картина']
+        i = types.index(self.ids.sets.ids.type.text)
+        types_eng = ['architecture', 'person', 'stamp', 'drawing']
+        self.saving_image(name, info, types_eng[i], self.img)
 
     def saving_image(self, name, info, t, img):
         """A method that creates loading and starts loading image to the database."""
@@ -180,7 +184,7 @@ class AddObjScreen(MDScreen):
             return False
 
     def save_image(self, file):
-        """A method that saves the users image to the hosting file storage."""
+        """A method that saves the user's image to the hosting file storage."""
         try:
             ftp = FTP(host, ftp_login, ftp_passwd)
             ftp.cwd(host + '/public_html/images')
@@ -230,7 +234,7 @@ class AddObjScreen(MDScreen):
 
 
 class ObjectsSets(MDScreen):
-    """Class of an object settings template."""
+    """Class of an object setting's template."""
     image = StringProperty()
     """Image that user chose."""
 
