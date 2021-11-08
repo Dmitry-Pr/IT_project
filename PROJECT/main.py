@@ -37,7 +37,7 @@ class MainScreen(MDScreen):
 
 
 class Manager(ScreenManager):
-    """Class that helps to switch between enter, registration and mai screens."""
+    """Class that helps to switch between enter, registration and main screens."""
     enter_screen = ObjectProperty(None)
     reg_screen = ObjectProperty(None)
     main_screen = ObjectProperty(None)
@@ -218,6 +218,7 @@ class MainApp(MDApp):
     def hook_keyboard(self, window, key, *args):
         """A method that changes the current screen
         if user clicked 'Back' button on his devise.
+        (Escape on PC)
         """
 
         if key == 27:
