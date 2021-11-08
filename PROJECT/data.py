@@ -13,7 +13,7 @@ from buttons import ImageBtn
 
 
 class DataScreen(MDScreen):
-    """Class of showing objects screen"""
+    """Class of showing objects' screen"""
     manager = ObjectProperty()
     data = []
     data_type = 'architecture'
@@ -32,7 +32,7 @@ class DataScreen(MDScreen):
         self.add_data()
 
     def add_data(self, marked=False):
-        """A method gets data that will be shown from the database."""
+        """A method that gets data that will be shown from the database."""
         try:
             data_length = MDApp.get_running_app().user.settings['data_length']
         except AttributeError:
@@ -60,11 +60,8 @@ class DataScreen(MDScreen):
                                                    OR user_id="{MDApp.get_running_app().user.user_id}")
                                                    ORDER BY RAND() LIMIT {data_length}''')
                         self.data = cursor.fetchall()
-                    # print(self.data)
             except OperationalError:
                 self.data = {}
-                # self.banner = True
-                # self.ids.banner.show()
                 self.create_dialog('Подключение к сети потерянно')
             except InterfaceError:
                 self.data = {}
@@ -198,7 +195,7 @@ class DataScreen(MDScreen):
         Clock.schedule_once(refresh_callback, 1)
 
     def get_info(self, instance):
-        """A method changes the current screen
+        """A method that changes current screen
         to screen with information about the chosen object."""
         MDApp.get_running_app().obj_id = instance.obj_id
         manager = MDApp.get_running_app().scr_manager.main_screen.ids.sm
