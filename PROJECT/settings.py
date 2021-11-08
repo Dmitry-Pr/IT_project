@@ -6,7 +6,7 @@ from pymysql import OperationalError, InterfaceError
 
 
 class SettingsScreen(MDScreen):
-    """Class of screen with applications settings."""
+    """Class of screen with application's settings."""
     settings = {'theme': 'light', 'data_length': 4, 'learning_level': 4,
                 'guess_level': 4, 'guess_length': 4, 'match_level': 4, 'match_length': 4}
 
@@ -32,7 +32,7 @@ class SettingsScreen(MDScreen):
 
     def on_pre_leave(self):
         """A method that works when user leaves the screen.
-        It saves the users settings in the database.
+        It saves the user's settings in the database.
         """
         if MDApp.get_running_app().connected:
             try:
@@ -57,7 +57,8 @@ class SettingsScreen(MDScreen):
 
     def delete_pressed(self, instance):
         """A method that works if user pressed button that deletes their account.
-        It asks if they are sure they want to delete their account."""
+        It asks if they are sure they want to delete their account.
+        """
         self.create_delete_dialog("Удалить аккаунт?")
 
     def delete_data(self, instance):
