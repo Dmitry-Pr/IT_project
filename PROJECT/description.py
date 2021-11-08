@@ -2,7 +2,7 @@ from kivymd.uix.screen import MDScreen
 
 
 class DescScreen(MDScreen):
-    """Class of screen with description of the applications functions."""
+    """Class of screen with description of the application's functions."""
     text1 = """Это приложение для изучения истории через изображения.
 В меню можно найти несколько тренировок для запомининия картинок.
     """
