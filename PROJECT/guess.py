@@ -260,7 +260,7 @@ class GuessScreen(MDScreen):
 
 
 class MyCard(GuessScreen):
-    """Class of template of a guess games task."""
+    """Class of a template of a guess game's task."""
     obj_name = StringProperty()
 
     def __init__(self, **kwargs):
