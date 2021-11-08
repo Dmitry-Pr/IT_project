@@ -67,7 +67,7 @@ class EGEScreen(MDScreen):
         """A method that checks what problems
         and what number of them did the user choose.
         If users chose is correct the method starts
-        loading of the problems.
+        loading the problems.
         """
         if self.problems[14] + self.problems[15] == 0:
             self.create_dialog("Вы не выбрали ни один номер")
@@ -259,7 +259,7 @@ class EGEScreen(MDScreen):
 
     def show_text(self, *args):
         """A method that is called if user wants to see a task
-        while answer to the task is being shown.
+        while an answer to the task is being shown.
         """
         if self.show_text_pressed:
             self.show_text_pressed = False
@@ -309,7 +309,7 @@ class EGEScreen(MDScreen):
         webbrowser.open(self.result[self.item]['url'])
 
     def minus(self, instance):
-        """A method that makes a tasks picture smaller."""
+        """A method that makes a task's picture smaller."""
         if self.ids.im_grid.size_hint[0] > 1:
             self.ids.im_grid.size_hint[0] -= 0.3
             self.ids.im_grid.size_hint[1] -= 0.3
@@ -318,7 +318,7 @@ class EGEScreen(MDScreen):
             self.ids.im_scr.scroll_y = 0.5
 
     def plus(self, instance):
-        """A method that makes a tasks picture bigger."""
+        """A method that makes a task's picture bigger."""
         if self.ids.im_grid.size_hint[0] < 10:
             self.ids.im_grid.size_hint[0] += 0.3
             self.ids.im_grid.size_hint[1] += 0.3
@@ -327,7 +327,7 @@ class EGEScreen(MDScreen):
             self.ids.im_scr.scroll_y = 0.5
 
     def check_answer(self, instance):
-        """A method that is  called when user gives his answer to a task."""
+        """A method that is called when user gives his answer to a task."""
         ans = self.result[self.item]['solution']['text']
         user_ans = self.ids.ans_field.text
         if len(user_ans.strip()):
