@@ -275,7 +275,7 @@ class MatchScreen(MDScreen):
 
 
 class Card(MatchScreen):
-    """Class of template of a guess games task."""
+    """Class of template of a match games task."""
     obj_image = StringProperty()
 
     def __init__(self, **kwargs):
@@ -283,7 +283,7 @@ class Card(MatchScreen):
 
 
 class MyLabel(MDLabel, TouchBehavior):
-    """Class of label with double press behaviour."""
+    """Class of a label with double press behaviour."""
     obj_id = NumericProperty()
     __events__ = (
         "on_double_press",
