@@ -44,7 +44,8 @@ class InfoScreen(MDScreen, EventDispatcher):
 
     def get_information(self, instance=None):
         """A method that changes information shown on the screen
-        if 'Больше информации' has been pressed or unpressed."""
+        if 'Больше информации' has been pressed or unpressed.
+        """
         if not self.more_pressed:
             self.more_pressed = True
             self.more_inf.text = 'Меньше информации'
@@ -155,7 +156,8 @@ class InfoScreen(MDScreen, EventDispatcher):
 
     def delete_obj(self, instance):
         """A method that deletes the object from the database
-        if the object is added by this user."""
+        if the object is added by this user.
+        """
         self.close_delete_dialog(None)
         if MDApp.get_running_app().connected:
             try:
